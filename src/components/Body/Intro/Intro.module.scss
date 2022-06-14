@@ -1,0 +1,15 @@
+.intro {
+  margin-top: 40px;
+}
+
+.listItem {
+  padding: 20px 0;
+  padding-top: 30px;
+  margin-bottom: 40px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+}

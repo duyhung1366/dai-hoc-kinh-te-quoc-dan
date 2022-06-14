@@ -1,0 +1,264 @@
+.header{
+    justify-content: space-between;
+    flex-wrap: nowrap !important;
+    padding-bottom: 20px;
+    padding-top: 12px;
+}
+
+.fixed { 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background: #d5e2f7 !important;
+    box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+    animation-name: opacity;
+    animation-duration: 1s;
+}
+
+.leftHeader{
+    margin-left: 10px;
+}
+
+.logoLeftHeader{
+    height: 55px;
+}
+
+.sloganLeftHeader{
+    color: #EC1F24;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 70px;
+    animation-name: colorSlogan;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    transition: all 2s;
+}
+
+.rightHeader{
+    justify-content: space-between;
+    font-size: 1.1em;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.itemRightHeader{
+    padding: 0 15px;
+    cursor: pointer;
+    transition: 1s;
+    position: relative;
+}
+
+/* item khóa học */
+.customItemCourse { 
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #1C3967;
+    font-size: 14px;
+}
+
+/* khóa học */
+.customBar{
+    position: absolute;
+    padding: 10px;
+    z-index: 2;
+    width: 400px !important;
+    top: 20px !important;
+    left: calc(50% - 200px) !important;
+}
+
+.boxCourses {
+    width: 100%;
+    max-height: 300px;
+    box-shadow: 0 0 10px rgb(0 0 0 / 20%);
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: content-box;
+}
+
+.boxCoursesGrid{
+    position: relative;
+    display: grid;
+    grid-template-columns: 100%;
+    gap: 15px;
+}
+
+/* hover màu đỏ */
+.customItemCourse:hover { 
+    color: red;
+}
+
+/* thẻ a */
+.itemRightHeader a {
+    color: #1C3967;
+    position: relative;
+    z-index: 3;
+    font-weight: bold;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.itemRightHeader a:hover { 
+    text-decoration: underline;
+}
+
+/* nút đăng nhập đăng kí */
+.buttonLoginRegister{
+}
+
+.loginButton{
+    color: #1C3967;
+    cursor: pointer;
+    background-color: #fff;
+    position: relative;
+    z-index: 3;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border: 1px solid !important;
+    padding: 8px 10px !important;
+    margin: 5px;
+}
+
+.loginButton:hover { 
+    background-color: #1C3967;
+    color: #fff;
+}
+
+/* mobile */
+.displayMobile{
+    display: none;
+}
+
+@keyframes opacity {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+@keyframes colorSlogan {
+    0%   {color: red;}
+    35%  {color: blue;}
+    75% {color: green;}
+  }
+
+  /* responsive */
+
+  /* mobile */
+@media (max-width: 739px) {
+
+    .header { 
+        background-color: #fff !important;
+    }
+
+    .showNavbar { 
+        display: block !important;
+        opacity: 1;
+        right: 0px !important;
+    }
+    
+    .hideNavbar {
+        display: block !important;
+        opacity: 0 !important;
+        right: -800px !important;
+    }
+
+    .buttonNavbar{
+        background-color: #fff;
+        color: #1C3967;
+        font-size: 20px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .rightHeader{
+        width: 100%;
+        position: fixed;
+        top: 65px;
+        background: #fff;
+        z-index: 2;
+        transition: all 1s ;
+    }
+
+    .displayMobile{
+        display: flex !important;
+        align-items: center;
+    }
+
+    .loginButton{
+        display: none !important;
+    }
+
+    .sloganLeftHeader{
+        margin-left: 30px;
+    }
+
+    .itemRightHeader {
+        padding-top: 10px !important;
+    }
+
+    .customBar {
+        z-index: 5 !important;
+        top: 31px !important;
+    }
+
+    .loginMobile{
+        display: flex;
+        align-items: center;
+    }
+
+    .buttonLoginMobile{
+        color: #1C3967;;
+        display: flex;
+        font-size: 15px;
+        align-items: center;
+        padding: 0 5px;
+        background-color: #fff;
+        border: none;
+        text-transform: uppercase;
+        line-height: 20px;
+        font-weight: 400;
+    }
+
+    .buttonLoginMobile:first-child {
+        border-right: 1px solid red;
+    }
+
+}
+
+/* Tablet - PC low resolution */
+@media (min-width: 740px) and (max-width: 1024px) {
+
+    .rightHeader{
+        font-size: 1em !important;
+        padding: 5px !important;
+        flex-wrap: wrap;
+    }
+
+    .itemRightHeader{
+        padding: 0 10px !important;
+    }
+
+    .sloganLeftHeader{
+        margin-left: 10px;
+    }
+    .customButtonCourses:hover.customButton{
+        z-index: -2;
+    }
+
+    .loginButton{
+        padding: 3px 10px !important;
+    }
+}
+
+/* > PC low resolution */
+@media (min-width: 1024px) and (max-width: 1239px) {
+    
+}

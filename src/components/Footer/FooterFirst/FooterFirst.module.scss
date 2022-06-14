@@ -1,0 +1,45 @@
+.footer {
+    padding-top: 50px;
+    padding-bottom: 20px;
+   
+}
+
+.titleConnect {
+    font-size: 13px;
+    color: #646E79;
+    font-weight: 500;
+}
+
+.footerMap {
+    display: flex;
+    height: 100px;
+    div {
+        padding: 5px;
+        img { 
+            width: 150px;
+        }
+    }
+}
+
+.maps {
+    display: block;
+    background: #4E9CAF;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 25px;
+}
+
+.footerLocation {
+    margin: 10px 0;
+    a { 
+        color: #556372;
+        font-size: 14px;
+        text-transform: capitalize;
+        &:hover { 
+            text-decoration: underline;
+        }
+    }
+}

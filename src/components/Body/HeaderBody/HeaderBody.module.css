@@ -1,0 +1,36 @@
+.headerBody {
+    background-image: url('https://onthisinhvien.com/resources/images/otsv/background-tagA.png');
+    background-repeat: no-repeat;
+    padding: 20px;
+    background-size: cover;
+    width: 350px;
+    text-align: center;
+    height: 100px;
+    margin-bottom: 70px;
+}
+
+.item {
+    color: #E10422;
+    font-style: italic;
+    font-size: 16px;
+    margin-left: 60px;
+}
+
+.item span { 
+    letter-spacing: 1px;
+    font-size: 14px;
+    margin-left: 10px;
+    font-weight: 400;
+}
+
+.totalMember {
+    margin: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.totalMember b { 
+    margin: 0 10px;
+    color: #E10422;
+}

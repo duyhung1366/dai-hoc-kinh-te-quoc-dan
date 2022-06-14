@@ -1,0 +1,18 @@
+.info {
+    margin-bottom: 10px;
+    a {
+        
+        color: #556372;
+        font-size: 14px;
+        letter-spacing: 1px;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}

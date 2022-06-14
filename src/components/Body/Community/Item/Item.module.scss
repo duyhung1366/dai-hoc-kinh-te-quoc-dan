@@ -1,0 +1,56 @@
+.item{
+    border: 1px solid #CAD6EC;
+    border-radius: 5px;
+    max-height: 225px;
+}
+
+.header{
+    padding: 25px;
+    text-align: center;
+    background: #e7eefa;
+    display: flex;
+    align-items: center;
+    span {
+        text-align: left;
+        margin-left: 5px;
+        color: #1C3967;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    div{
+        font-size: 30px;
+        color: rgb(51, 158, 235);
+    }
+}
+
+.body{
+    padding: 25px;
+    text-align: center;
+}
+
+.itemMember{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .icon {
+        display: flex;
+        div {
+            margin-left: 5px;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.join{
+    padding: 10px;
+    background-color: red;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    a {
+        color: #fff;
+        font-weight: bold;
+    }
+}
