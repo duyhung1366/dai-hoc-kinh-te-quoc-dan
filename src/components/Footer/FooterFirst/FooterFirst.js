@@ -40,6 +40,7 @@ const FooterFirst = () => {
                       href="https://www.google.com/maps/place/%C3%94n+thi+sinh+vi%C3%AAn+HL/@21.0117061,105.8755866,12.27z/data=!4m5!3m4!1s0x0:0x15f24c1278810bcf!8m2!3d21.00247!4d105.8452792?hl=vi"
                       target="_blank"
                       className={styles.maps}
+                      rel="noreferrer"
                     >
                       on google map!
                     </a>

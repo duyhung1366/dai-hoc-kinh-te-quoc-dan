@@ -1,11 +1,9 @@
 import clsx from "clsx";
-import React, { useEffect, useState } from "react";
-import styles from "./index.module.scss";
 import { useDispatch } from "react-redux";
 import { slideFeedback } from "../../../../../actions/SlideFeedback";
+import styles from "./index.module.scss";
 
 const FooterPagination = () => {
-  const [active, setActive] = useState("");
   const dispatch = useDispatch();
 
   const handleClick = (e, index) => {
@@ -22,7 +20,7 @@ const FooterPagination = () => {
 
   return (
     <div>
-      <ul className={clsx(styles.pagination, active)}>
+      <ul className={clsx(styles.pagination)}>
         <li
           onClick={(e) => {
             handleClick(e, 0);

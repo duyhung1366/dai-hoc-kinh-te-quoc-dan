@@ -71,10 +71,7 @@ const ListCourse = ({ title, api }) => {
       // console.log("hung");
       setIsloaded(false);
       fetchCoursesList();
-      console.log("local Store no ");
     } else {
-      console.log("local Store yes ");
-
       const { data, pagination } = checkLocal;
       setIsloaded(true);
       setCourses(data);

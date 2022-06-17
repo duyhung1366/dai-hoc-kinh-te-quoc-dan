@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import styles from "./Combo.module.css";
@@ -52,8 +52,52 @@ const Combo = () => {
 
   const handleCombo = (e) => {
     // console.log(e.currentTarget.id);
+    e.preventDefault();
     dispatch(showComboFirst(e.currentTarget.id));
   };
+
+  const comboEvent = useRef(null);
+
+  useEffect(() => {
+    let isDrawing = false;
+    let x = 0;
+
+    const handleMouseDown = (e) => {
+      e.preventDefault();
+      x = e.offsetX;
+      isDrawing = true;
+    };
+
+    const handleMouseMove = (e) => {
+      if (isDrawing) {
+        x = e.offsetX;
+        console.log(x);
+      }
+    };
+
+    const handleMouseUp = (e) => {
+      if (isDrawing) {
+        x = 0;
+        console.log("hi");
+        isDrawing = false;
+      }
+    };
+
+    const element = comboEvent.current;
+    if (element) {
+      element.addEventListener("mousemove", handleMouseMove);
+      element.addEventListener("mousedown", handleMouseDown);
+      element.addEventListener("mouseup", handleMouseUp);
+    }
+
+    return () => {
+      if (element) {
+        element.removeEventListener("mousemove", handleMouseMove);
+        element.removeEventListener("mouseup", handleMouseUp);
+        element.removeEventListener("mousedown", handleMouseDown);
+      }
+    };
+  }, [combos]);
 
   return (
     <div className={clsx(styles.combo)}>
@@ -74,6 +118,7 @@ const Combo = () => {
                   transform: `translate(-${x - 260}px, 0px)`,
                   transition: "all 800ms ease 0s",
                 }}
+                // ref={comboEvent}
               >
                 {combos.map((combo) => {
                   return (

@@ -1,17 +1,14 @@
-import styles from "./HeaderCourse.module.css";
 import { AiOutlineSearch } from "react-icons/ai";
-import React, { useState } from "react";
-import InputItem from "./Input/Input";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import ReactLoading from "react-loading";
 import { SearchData } from "../../../actions/SearchData";
+import styles from "./HeaderCourse.module.css";
+import InputItem from "./Input/Input";
 
 const HeaderCourse = () => {
   const valueInput = useSelector((state) => state.input.value); // value from input field
   var check = useSelector((state) => state.input.check);
   // const [check, setCheck] = useState(false);
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const dispatch = useDispatch();
 
   // async function getData() {
