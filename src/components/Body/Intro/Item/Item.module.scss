@@ -1,53 +1,76 @@
 .item {
-    transition: all 0.5s;
-    text-align: center;
-    &:hover {
-        transform: translateY(-10%);
-        .imageInfo{
-            background: red; 
-            img {
-                filter: invert(5) sepia(0) saturate(1) hue-rotate(0deg) brightness(5);
-            }
-        }
-        .numberInfo{
-            color: red;
-        }
-        .textInfo{
-            color: red;
-        }
+  transition: all 0.5s;
+  text-align: center;
+  &:hover {
+    transform: translateY(-10%);
+    .imageInfo {
+      background: red;
+      img {
+        filter: invert(5) sepia(0) saturate(1) hue-rotate(0deg) brightness(5);
+      }
     }
+    .numberInfo {
+      color: red;
+    }
+    .textInfo {
+      color: red;
+    }
+    .hoverShow {
+      height: 80px;
+      width: 80px;
+      background: #fcd2d3;
+      border-radius: 100%;
+      position: absolute;
+      z-index: -1;
+      top: 7px;
+      left: 7px;
+      opacity: 1;
+      transition: 0.5s;
+    }
+  }
 }
 
-.imageInfo{
+.imageInfo {
+  transition: 0.5s;
+  height: 80px;
+  width: 80px;
+  background: #d5e2f3;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  position: relative;
+  img {
     transition: 0.5s;
-    height: 80px;
-    width: 80px;
-    background: #D5E2F3;
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-    img {
-        transition: 0.5s;
-    }
+  }
 }
 
-.numberInfo{
-    transition: 0.5s;
-    margin: 20px;
-    color: #065A9E;
-    font-size: 30px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    display: flex;
-    align-items: center;
-    .charactor{
-        font-size: 16px;
-    }
-
+.numberInfo {
+  transition: 0.5s;
+  margin: 20px;
+  color: #065a9e;
+  font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .charactor {
+    font-size: 16px;
+  }
 }
 
-.textInfo{
-    text-transform: capitalize;
+.textInfo {
+  text-transform: capitalize;
+}
+
+/* mobile */
+@media (max-width: 739px) {
+  .numberInfo {
+    margin: 5px !important;
+  }
+  .item {
+    margin-top: 20px;
+  }
 }

@@ -156,6 +156,7 @@
 @media (max-width: 739px) {
 
     .header { 
+        padding-top: 20px;
         background-color: #fff !important;
     }
 
@@ -182,10 +183,13 @@
     .buttonNavbar{
         background-color: #fff;
         color: #1C3967;
-        font-size: 20px;
+        font-size: 25px;
         margin: 0 5px;
         cursor: pointer;
         color: red;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
     }
 
     .rightHeader{
@@ -202,6 +206,7 @@
     .displayMobile{
         display: flex !important;
         align-items: center;
+        margin-right: 10px;
     }
 
     .loginButton{
@@ -209,7 +214,7 @@
     }
 
     .sloganLeftHeader{
-        margin-left: 30px;
+        margin-left: 70px;
     }
 
     .itemRightHeader {
