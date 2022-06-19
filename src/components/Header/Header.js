@@ -2,7 +2,7 @@ import styles from "./Header.module.css";
 import clsx from "clsx";
 import { React, useEffect, useState } from "react";
 import Courses from "./Courses/Courses";
-import { BsChevronBarContract } from "react-icons/bs";
+import { AiOutlineMenu } from "react-icons/ai";
 import ReactLoading from "react-loading";
 
 const Header = () => {
@@ -208,13 +208,16 @@ const Header = () => {
           <div className={styles.displayMobile}>
             <div>
               <div className={styles.buttonNavbar} onClick={handleNavbar}>
-                <BsChevronBarContract />
+                <AiOutlineMenu />
               </div>
               {/* <div className={styles.buttonNavbar} onClick ={handleHideNavbar}><BsChevronBarExpand /></div> */}
             </div>
-            <div className={styles.loginMobile}>
+            {/* <div className={styles.loginMobile}>
               <button className={styles.buttonLoginMobile}>đăng nhập</button>
               <button className={styles.buttonLoginMobile}>đăng ký</button>
+            </div> */}
+            <div className={styles.loginMobile}>
+              <img src="https://storage.googleapis.com/kslearning/avatar.png" />
             </div>
           </div>
         </div>

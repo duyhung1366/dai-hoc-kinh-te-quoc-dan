@@ -2,6 +2,7 @@ import { combineReducers } from "redux";
 import InputReducer from "./InputValue";
 import SearchReducer from "./SearchReducer";
 import ShowComboFirst from "./ShowCombo";
+import SlideCombo from "./slideCombo";
 import SlideFeedback from "./SlideFeedback";
 
 const rootReducer = combineReducers({
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
   searchData: SearchReducer,
   slideFeedback: SlideFeedback,
   showComboFirst: ShowComboFirst,
+  slideCombo: SlideCombo,
 });
 
 export default rootReducer;

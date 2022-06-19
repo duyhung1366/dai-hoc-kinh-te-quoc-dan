@@ -12,7 +12,7 @@ function App() {
       <div className="grid">
         <Header />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/dai-hoc-kinh-te-quoc-dan" element={<Home />}></Route>
           <Route path="combo" element={<Combo />}></Route>
         </Routes>
         <Footer />

@@ -133,6 +133,7 @@
     color: #fff;
 }
 
+
 /* mobile */
 .displayMobile{
     display: none;
@@ -160,14 +161,22 @@
 
     .showNavbar { 
         display: block !important;
+        height: inherit;
         opacity: 1;
         right: 0px !important;
+        animation-name: showMenu;
+        animation-duration: 1s;
+        overflow: hidden;
     }
     
     .hideNavbar {
         display: block !important;
-        opacity: 0 !important;
-        right: -800px !important;
+        height: 0px;
+        /* opacity: 0 !important; */
+        animation-name: hideMenu;
+        animation-duration: 1s;
+        overflow: hidden;
+
     }
 
     .buttonNavbar{
@@ -176,15 +185,18 @@
         font-size: 20px;
         margin: 0 5px;
         cursor: pointer;
+        color: red;
     }
 
     .rightHeader{
+        padding: 0px;
         width: 100%;
         position: fixed;
         top: 65px;
         background: #fff;
         z-index: 2;
-        transition: all 1s ;
+        margin-top: 20px;
+        /* transition: all 1s ; */
     }
 
     .displayMobile{
@@ -230,6 +242,16 @@
     .buttonLoginMobile:first-child {
         border-right: 1px solid red;
     }
+    .loginMobile {
+        width: 32px;
+        height: 32px;
+    }
+
+    .loginMobile img {
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
 
 }
 
@@ -261,4 +283,21 @@
 /* > PC low resolution */
 @media (min-width: 1024px) and (max-width: 1239px) {
     
+}
+
+ @keyframes showMenu {
+    from{ 
+        height: 0px;
+    }
+    to { 
+        height: 202px; 
+    }
+}
+ @keyframes hideMenu {
+    from{ 
+        height: 202px;
+    }
+    to { 
+        height: 0px; 
+    }
 }

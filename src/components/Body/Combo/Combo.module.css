@@ -18,7 +18,6 @@
 }
 
 .listCombo{
-    padding : 0 15px
 }
 
 .container{
@@ -28,20 +27,16 @@
 }
 
 .itemCombos{
-    width: 3178px;
-    left: 0px;
-    display: block;
+    display: flex;
     transition: all 800ms ease 0s;
 }
 
 .colItem{
-    width: 220px;
     background: #E10422;
-    margin: 0 20px;
     padding: 7px;
+    margin: 0 20px;
     border-radius: 10px;
     text-align: center;
-    float: left;
 }
 
 .linkCombo{

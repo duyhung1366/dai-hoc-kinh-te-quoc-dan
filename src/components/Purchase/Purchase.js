@@ -40,7 +40,7 @@ const Purchase = () => {
       {/* nav */}
       <div className={styles.nav}>
         <div className={clsx("grid wide d-flex")}>
-          <Link to="/">Trang chủ</Link>
+          <Link to="/dai-hoc-kinh-te-quoc-dan">Trang chủ</Link>
           <div className={styles.icon}>
             <MdNavigateNext />
           </div>

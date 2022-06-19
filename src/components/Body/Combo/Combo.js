@@ -1,19 +1,70 @@
 import clsx from "clsx";
-import React, { useEffect, useRef, useState } from "react";
-import { AiOutlineHeart } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import styles from "./Combo.module.css";
+import { useEffect, useRef, useState } from "react";
 import ReactLoading from "react-loading";
-import PurchaseApi from "../../../api/PurchaseApi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { showComboFirst } from "../../../actions/ShowComboFirst";
+import { numberNav, slideCombo } from "../../../actions/SlideCombo";
+import PurchaseApi from "../../../api/PurchaseApi";
+import useWindowDimensions from "../../common/useWindowDimensions";
+import styles from "./Combo.module.css";
+import Pagination from "./Pagination/Pagination";
 
 const Combo = () => {
   const [combos, setCombo] = useState([]);
   const [x, setX] = useState(260);
   const [index, setIndex] = useState(1);
   const [isloaded, setIsloaded] = useState(false);
+  const [widthCombo, setWidthCombo] = useState(0);
+  const [responsiveItem, setResponsiveItem] = useState(0); // pc : 5 , tablet : 2, pc : 1
+  const dispatch = useDispatch();
+  const indexNav = useSelector((state) => state.slideCombo.index);
 
+  // ref
+  const comboEvent = useRef(null);
+  const listCombo = useRef(null);
+
+  // get size window
+  const { heightWindow, widthWindow } = useWindowDimensions();
+  useEffect(() => {
+    // console.log(widthWindow);
+    let sum = combos.length;
+
+    if (widthWindow >= 1024) {
+      // pc
+      if (sum !== 0) {
+        dispatch(numberNav(Math.ceil(sum / 5)));
+      }
+      if (responsiveItem !== 5) {
+        setResponsiveItem(5);
+      }
+    } else if (widthWindow < 1024 && widthWindow >= 740) {
+      // tablet
+      if (sum !== 0) {
+        dispatch(numberNav(Math.ceil(sum / 2)));
+      }
+      if (responsiveItem !== 2) {
+        setResponsiveItem(2);
+      }
+    } else {
+      // mobile
+      if (sum !== 0) {
+        dispatch(numberNav(Math.ceil(sum)));
+      }
+      if (responsiveItem !== 1) {
+        setResponsiveItem(1);
+      }
+    }
+  }, [combos, widthWindow]);
+
+  useEffect(() => {
+    // get width of listcombo
+
+    // pc
+    setWidthCombo(listCombo.current.clientWidth / responsiveItem);
+  }, [responsiveItem]);
+
+  // get data combo
   useEffect(() => {
     try {
       const fetchComboList = async () => {
@@ -34,21 +85,55 @@ const Combo = () => {
     }
   }, []);
 
+  // setinterval
   useEffect(() => {
-    const countId = setInterval(() => {
-      setIndex((pre) => (pre < 5 ? pre + 2 : (pre = 1)));
-    }, 3000);
+    // handle slie combo
+    let count = combos.length - responsiveItem;
+    const handleSlideCombo = (indexNav) => {
+      if (indexNav) {
+        if (responsiveItem === 1) {
+          setIndex(indexNav);
+          count = combos.length - responsiveItem - (indexNav - 1);
+        } else {
+          setIndex(indexNav + (indexNav - 1));
+          count = combos.length - responsiveItem - (indexNav - 1) * 2;
+        }
+      } else {
+        if (count > 0) {
+          if (responsiveItem === 1) {
+            setIndex((pre) => {
+              dispatch(slideCombo(pre + 1));
+              return pre + 1;
+            });
 
+            count--;
+          } else {
+            setIndex((pre) => {
+              dispatch(slideCombo((pre + 1) / 2 + 1));
+              return pre + 2;
+            });
+
+            count -= 2;
+          }
+        } else {
+          setIndex(1);
+          dispatch(slideCombo(1));
+          count = combos.length - responsiveItem;
+        }
+      }
+    };
+
+    handleSlideCombo(indexNav);
+    const countId = setInterval(handleSlideCombo, 3000);
     return () => {
       clearInterval(countId);
     };
-  }, []);
-
+  }, [combos, responsiveItem, indexNav]);
   useEffect(() => {
-    setX(260 * index);
+    setX(widthCombo * index);
   }, [index]);
 
-  const dispatch = useDispatch();
+  // click combo
 
   const handleCombo = (e) => {
     // console.log(e.currentTarget.id);
@@ -56,7 +141,7 @@ const Combo = () => {
     dispatch(showComboFirst(e.currentTarget.id));
   };
 
-  const comboEvent = useRef(null);
+  // const comboEvent = useRef(null);
 
   useEffect(() => {
     let isDrawing = false;
@@ -108,24 +193,29 @@ const Combo = () => {
             src="https://onthisinhvien.com/resources/images/otsv/tag-hotcombo.png"
           />
         </div>
-        <div className={clsx(styles.listCombo)}>
-          <div className={clsx(styles.container)}>
-            {/* call api */}
-            {isloaded ? (
-              <div
-                className={clsx(styles.itemCombos)}
-                style={{
-                  transform: `translate(-${x - 260}px, 0px)`,
-                  transition: "all 800ms ease 0s",
-                }}
-                // ref={comboEvent}
-              >
-                {combos.map((combo) => {
-                  return (
+        <div className={clsx(styles.container)} ref={listCombo}>
+          {/* call api */}
+          {isloaded ? (
+            <div
+              className={clsx(styles.itemCombos)}
+              style={{
+                transform: `translate(-${x - widthCombo}px, 0px)`,
+                transition: "all 800ms ease 0s",
+              }}
+              // ref={comboEvent}
+            >
+              {combos.map((combo, i) => {
+                return (
+                  <div
+                    style={{
+                      minWidth: `${widthCombo}px`,
+                    }}
+                    key={i}
+                  >
                     <div
                       key={combo.id}
                       id={combo.id}
-                      className={styles.colItem}
+                      className={clsx(styles.colItem)}
                       onClick={(e) => {
                         handleCombo(e);
                       }}
@@ -149,42 +239,17 @@ const Combo = () => {
                         </div>
                       </Link>
                     </div>
-                  );
-                })}
-              </div>
-            ) : (
-              <div className="d-flex a-center j-c">
-                <ReactLoading type="cylon" color="red" />
-              </div>
-            )}
-          </div>
-          <div className={styles.clickable}>
-            <div
-              className={clsx(styles.item)}
-              onClick={() => {
-                setIndex(1);
-              }}
-            >
-              <AiOutlineHeart />
+                  </div>
+                );
+              })}
             </div>
-            <div
-              className={clsx(styles.item)}
-              onClick={() => {
-                setIndex(3);
-              }}
-            >
-              <AiOutlineHeart />
+          ) : (
+            <div className="d-flex a-center j-c">
+              <ReactLoading type="cylon" color="red" />
             </div>
-            <div
-              className={clsx(styles.item)}
-              onClick={() => {
-                setIndex(5);
-              }}
-            >
-              <AiOutlineHeart />
-            </div>
-          </div>
+          )}
         </div>
+        <Pagination />
       </div>
     </div>
   );
