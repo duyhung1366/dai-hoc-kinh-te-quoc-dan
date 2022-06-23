@@ -1,0 +1,35 @@
+.submit {
+  padding: 20px 0;
+}
+
+.error {
+  margin-bottom: 20px;
+  color: red;
+}
+
+.none {
+  margin: 0;
+}
+
+.text {
+  margin: 25px 0;
+  color: #777;
+}
+
+.facebook {
+  display: flex;
+  justify-content: center;
+
+  button {
+    display: flex;
+    color: #fff;
+    font-size: 17px;
+    background-color: #3a549e;
+    padding: 12px 70px;
+    border-radius: 50px 0px 50px 50px;
+
+    p {
+      margin-left: 5px;
+    }
+  }
+}

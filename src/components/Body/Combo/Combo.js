@@ -12,7 +12,7 @@ import Pagination from "./Pagination/Pagination";
 
 const Combo = () => {
   const [combos, setCombo] = useState([]);
-  const [x, setX] = useState(260);
+  const [x, setX] = useState(0);
   const [index, setIndex] = useState(1);
   const [isloaded, setIsloaded] = useState(false);
   const [widthCombo, setWidthCombo] = useState(0);

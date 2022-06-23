@@ -26,7 +26,12 @@ const Pagination = (props) => {
         >
             next
         </button> */}
-      <button>xem thêm</button>
+      <button
+        disabled={_page >= totalPage}
+        onClick={() => handlePageChange(_page + 1)}
+      >
+        xem thêm
+      </button>
     </div>
   );
 };

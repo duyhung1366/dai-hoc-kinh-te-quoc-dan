@@ -51,38 +51,46 @@ const ListCourse = ({ title, api }) => {
 
     async function fetchCoursesList() {
       try {
-        // console.log("hi");
         const response = await fetch(requestUrl);
         const responseJson = await response.json();
         const { data, pagination } = responseJson;
-        setCourses(data);
-        setPagination(pagination);
+        // setCourses((prev) => {
+        //   console.log(prev);
+        //   return [...prev, ...data];
+        // });
+        if (courses.length === 0) {
+          setCourses(data);
+        } else {
+          const newCourses = [...courses, ...data];
+          setCourses(newCourses);
+          setPagination(pagination);
+        }
         setIsloaded(true);
-        localStorage.setItem(requestUrl, JSON.stringify(responseJson));
+        // localStorage.setItem(requestUrl, JSON.stringify(responseJson));
       } catch (error) {
         setIsloaded(true);
         console.log("failed to fetch course list : ", error.message);
       }
     }
     // local storage
-    const checkLocal = JSON.parse(localStorage.getItem(requestUrl));
+    // const checkLocal = JSON.parse(localStorage.getItem(requestUrl));
 
-    if (checkLocal === null) {
-      // console.log("hung");
-      setIsloaded(false);
-      fetchCoursesList();
-    } else {
-      const { data, pagination } = checkLocal;
-      setIsloaded(true);
-      setCourses(data);
-      setPagination(pagination);
-    }
+    // if (checkLocal === null) {
+    //   setIsloaded(false);
+    //   fetchCoursesList();
+    // } else {
+    //   const { data, pagination } = checkLocal;
+    //   setIsloaded(true);
+    //   setCourses(data);
+    //   setPagination(pagination);
+    // }
+    setIsloaded(false);
+    fetchCoursesList();
   }, [filters]);
 
   // handle search
   useEffect(() => {
     if (valueInput !== null) {
-      console.log("search");
       if (valueInput.length > 0) {
         setCheck(
           courses.filter((course) => {
@@ -120,11 +128,8 @@ const ListCourse = ({ title, api }) => {
     <div>
       <div className={styles.title}>{title}</div>
       <div className={styles.listCourse}>
-        {isloaded ? (
-          <Show courses={!check ? courses : check} />
-        ) : (
-          <ReactLoading type="bars" color="#000" />
-        )}
+        <Show courses={!check ? courses : check} />
+        {isloaded ? <div></div> : <ReactLoading type="bars" color="#000" />}
         <Pagination pagination={pagination} onPageChange={handlePageChange} />
       </div>
     </div>

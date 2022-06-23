@@ -4,6 +4,8 @@ import { React, useEffect, useState } from "react";
 import Courses from "./Courses/Courses";
 import { AiOutlineMenu } from "react-icons/ai";
 import ReactLoading from "react-loading";
+import { loginToggle } from "../../actions/Login";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
   const [showCourses, setShowCourses] = useState("d_none");
@@ -11,6 +13,8 @@ const Header = () => {
   const [courses, setCourses] = useState([]);
   const [news, setNews] = useState([]);
   const [isloaded, setIsloaded] = useState(false);
+
+  const dispatch = useDispatch();
 
   // handle show khoa hoc
   const handleShowCourses = () => {
@@ -198,7 +202,14 @@ const Header = () => {
                   "a-center"
                 )}
               >
-                <button className={styles.loginButton}>Đăng nhập</button>
+                <button
+                  className={styles.loginButton}
+                  onClick={() => {
+                    dispatch(loginToggle(true));
+                  }}
+                >
+                  Đăng nhập
+                </button>
                 <button className={styles.loginButton}>đăng ký</button>
               </div>
             </div>

@@ -1,0 +1,20 @@
+.header {
+  border-bottom: 1px solid #ccc;
+  position: relative;
+  margin: 0px 15px;
+
+  p {
+    padding: 20px 0px;
+    font-size: 17px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+  }
+
+  button {
+    position: absolute;
+    right: 5px;
+    top: 20px;
+    font-size: 25px;
+    opacity: 0.5;
+  }
+}

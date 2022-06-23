@@ -1,0 +1,25 @@
+.boxInput {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 5px 20px;
+
+  input {
+    width: 100%;
+    margin: 10px 20px;
+    padding: 13px 10px;
+    padding-left: 35px;
+    font-size: 17px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: 200;
+  }
+
+  div {
+    position: absolute;
+    left: 50px;
+    top: 28px;
+    font-size: 20px;
+    color: rgb(106, 106, 106);
+  }
+}

@@ -1,0 +1,41 @@
+.login {
+  //   background-color: #fff;
+  position: fixed;
+  top: 0px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 5;
+  background-color: rgba(72, 72, 72, 0.3);
+
+  .container {
+    margin-top: 30px;
+    background-color: #fff;
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px 2px rgb(143, 143, 143);
+    width: 60%;
+
+    .pass {
+      color: #337ab7;
+      text-align: left;
+      padding: 0 40px;
+
+      p {
+        cursor: pointer;
+        display: inline-block;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+button {
+  background: 0;
+  border: none;
+  cursor: pointer;
+}
